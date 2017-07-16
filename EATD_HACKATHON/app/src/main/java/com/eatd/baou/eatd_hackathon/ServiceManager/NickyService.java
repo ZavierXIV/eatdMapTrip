@@ -31,7 +31,7 @@ public class NickyService extends Service implements Observer {
     private NotificationManager mNotificationManager;
     private PowerManager.WakeLock wakeLock;
     private long checkDelayTime = 3000; // 每隔幾毫秒執行一次
-    private final int serviceDoMaxCount = 1; // service 最大執行次數 // Test
+    private final int serviceDoMaxCount = 10; // service 最大執行次數 // Test
     private int serviceDoCount = 0; // service 目前執行次數
 
     private DataManager dataManager;
@@ -121,10 +121,10 @@ public class NickyService extends Service implements Observer {
                 .setContentIntent(appIntent)
                 .setSmallIcon(R.drawable.ic_loyalty_black_24dp) // 設置狀態列裡面的圖示（小圖示）　　
                 .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.drawable.firerice)) // 下拉下拉清單裡面的圖示（大圖示）
-                .setTicker("BFBDBRBcccRR") // 設置狀態列的顯示的資訊
+                .setTicker("有新景點!! 快來瞧瞧") // 設置狀態列的顯示的資訊
                 .setWhen(System.currentTimeMillis())// 設置時間發生時間
                 .setAutoCancel(false) // 設置通知被使用者點擊後是否清除  //notification.flags = Notification.FLAG_AUTO_CANCEL;
-                .setContentTitle("BBB有新景點!! Notification Title") // 設置下拉清單裡的標題
+                .setContentTitle("有新景點!! 快來瞧瞧") // 設置下拉清單裡的標題
                 .setContentText(contentText)// 設置上下文內容
                 .setOngoing(true)      //true使notification變為ongoing，用戶不能手動清除// notification.flags = Notification.FLAG_ONGOING_EVENT; notification.flags = Notification.FLAG_NO_CLEAR;
                 .setDefaults(Notification.DEFAULT_ALL) //使用所有默認值，比如聲音，震動，閃屏等等
@@ -170,7 +170,7 @@ public class NickyService extends Service implements Observer {
 //                    MapsActivity.tv_info.setText(msg);
 //            } else
             Log.i(zavier_tag, msg);
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
             // 夠近 且UI沒有開啟畫面的時候 觸發通知
             boolean hasCloseViewPonit = ((boolean) arg);
